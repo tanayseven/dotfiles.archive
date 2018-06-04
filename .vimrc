@@ -2,7 +2,7 @@
 " Vimrc should be customized to suit your needs you might endup
 " making your vim experience more complicated than needed.
 
-set number " show line numbers
+set number relativenumber " show line numbers
 syntax on " enable syntax highlighting
 set ruler " show file status in a bottom status bar
 set tabstop=4 " number of visual spaces per TAB
