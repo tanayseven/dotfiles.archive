@@ -1,0 +1,2 @@
+alias activate-conda="export PATH=$PATH:$HOME/anaconda3"
+

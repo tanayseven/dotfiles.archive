@@ -1,0 +1,2 @@
+echo "source ~/.aliases" >> ~/.zshrc
+
