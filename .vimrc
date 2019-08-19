@@ -17,6 +17,7 @@ set lazyredraw " don't redraw in between executions of macros
 set incsearch " search as characters are entered
 set hlsearch " highlight search matches
 set clipboard=unnamedplus " link yanking/deleting/pasting operations to the system clipboard
+set encoding=utf-8
 nnoremap <C-y> "+y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
