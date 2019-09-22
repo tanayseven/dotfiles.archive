@@ -22,7 +22,7 @@ Installed packages (Arch linux)
 2. Termite
    [package](https://www.archlinux.org/packages/community/x86_64/termite/) download `termite` from the official community packages from the pacman repositories. 
    Termite is a light-weght configurable terminal emulator which is modal and therefore keyboard friendly.
-   The config can be found in the `.config/i3/config` directory.
+   The config can be found in the `.config/termite/config` directory.
 3. Polybar
    [package](https://aur.archlinux.org/packages/polybar-git/) download `polybar-git` from the Arch AUR
    Used as a status bar for the i3-wm. [More details about Polybar](https://wiki.archlinux.org/index.php/Polybar).
