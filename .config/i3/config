@@ -144,6 +144,22 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+# monitor config and workspace-monitor mapping
+exec_always --no-startup-id xrandr --output eDP-1 --primary --mode 3840x2160 --pos 3840x0 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --mode 1920x1080 --pos 0x0 --scale 2x2 --rotate normal
+# exec_always --no-startup-id xrandr --output eDP-1 --primary
+# exec_always --no-startup-id xrandr --output DP-3 --scale 2x2
+# exec_always --no-startup-id xrandr --output DP-3 --left-of eDP-1
+workspace $ws1  output DP-3 
+workspace $ws2  output DP-3 
+workspace $ws3  output DP-3 
+workspace $ws4  output DP-3 
+workspace $ws5  output DP-3 
+workspace $ws6  output eDP-1 
+workspace $ws7  output eDP-1
+workspace $ws8  output eDP-1
+workspace $ws9  output eDP-1
+workspace $ws10 output eDP-1  
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode

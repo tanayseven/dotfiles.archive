@@ -183,29 +183,10 @@ label-song-maxlen = 25
 label-song-ellipsis = true
 
 [module/xbacklight]
-type = internal/xbacklight
-output = ${env:MONITOR:eDP-1}
-format = <label>
-label = "%percentage%%"
+type = custom/script
+exec = xbacklight -get
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.foreground-alt}
-;type = internal/xbacklight
-;
-;format = <label> <bar>
-;label = " %percentage%% "
-;;output = "eDP-1"
-;
-;bar-width = 10
-;bar-indicator = |
-;bar-indicator-foreground = #fff
-;bar-indicator-font = 2
-;bar-fill = ─
-;bar-fill-font = 2
-;bar-fill-foreground = #9f78e1
-;bar-empty = ─
-;bar-empty-font = 2
-;bar-empty-foreground = ${colors.foreground-alt}
+format = <label>%
 
 [module/backlight-acpi]
 inherit = module/xbacklight
@@ -436,3 +417,10 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+
+[module/titlehook]
+type = custom/ipc
+hook-0 = echo "Some Text"
+label = %output%
+initial = 1
+
