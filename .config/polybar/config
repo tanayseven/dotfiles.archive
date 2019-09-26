@@ -57,7 +57,7 @@ font-2 = RobotoMono Nerd Font:size=20;1
 
 modules-left = bspwm i3
 modules-center = xwindow
-modules-right = mpd filesystem xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = mpd filesystem xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature user date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -88,11 +88,9 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format-prefix-foreground = ${colors.foreground}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
@@ -217,6 +215,25 @@ interval = 3.0
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 =  [    ]
+ramp-signal-1 =  [=   ]
+ramp-signal-2 =  [==  ]
+ramp-signal-3 =  [=== ]
+ramp-signal-4 =  [====]
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/user]
+type = custom/script
+exec = getent passwd | grep $USER | awk -F ':' '{print $5}'
+format-prefix = " "
+format = <label>
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
