@@ -12,6 +12,8 @@ Syncing config from $HOME to current repository
 
 `make update` will copy all the updated config from your directories to the current repositories if not up to date
 
+`make install` to install all the necessary tools, make sure that you are running arch linux
+
 Installed packages (Arch linux)
 -------------------------------
 
