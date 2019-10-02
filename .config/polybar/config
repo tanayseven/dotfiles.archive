@@ -18,8 +18,8 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
+background = ${xrdb:background:#002b36}
+background-alt = ${xrdb:color0:#073642}
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
@@ -28,7 +28,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 50
 ;offset-x = 1%
@@ -54,30 +54,29 @@ module-margin-right = 2
 font-0 = NotoSans-Regular:size=20;1
 font-1 = Font Awesome 5 Free Solid:size=20;1
 font-2 = RobotoMono Nerd Font:size=20;1
+font-3 = "3270Medium Nerd Font:style=Medium:size=20;1"
 
 modules-left = bspwm i3
 modules-center = xwindow
-modules-right = mpd filesystem xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature user date powermenu
+modules-right = mpd d filesystem d xbacklight d pulseaudio d xkeyboard d memory d cpu d wlan d eth d battery d temperature d user d date d powermenu
 
 tray-position = right
 tray-padding = 2
 tray-scale = 1.0
 tray-maxsize = 35
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[module/d]
+type = custom/text
+
+content-prefix = ""
+content-prefix-foreground = ${colors.background-alt}
+content-prefix-background = ${colors.background}
+
+content = ""
+content-foreground = ${colors.background}
+content-background = ${colors.background-alt}
 
 [module/xwindow]
 type = internal/xwindow
@@ -126,9 +125,6 @@ label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
-; Separator in between workspaces
-; label-separator = |
-
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
@@ -136,7 +132,7 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
@@ -185,11 +181,6 @@ type = custom/script
 exec = xbacklight -get
 format-prefix = " "
 format = <label>%
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
 
 [module/cpu]
 type = internal/cpu

@@ -183,6 +183,7 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
+
 }
 
 bindsym $mod+r mode "resize"
@@ -200,8 +201,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 1
 
 
 # Setup gaps
-for_window [class="^.*"] border pixel 0
-gaps inner 5
+# for_window [class="^.*"] border pixel 0
+# gaps inner 5
 
-exec --no-startup-id polybar example -r
+exec --no-startup-id $HOME/.config/polybar/launch_polybar.sh
 
