@@ -30,7 +30,7 @@ alert = #bd2c40
 [bar/example]
 monitor = ${env:MONITOR:}
 width = 100%
-height = 50
+height = 35
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -39,7 +39,7 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 6
+line-size = 1
 line-color = #f00
 
 border-size = 8
@@ -51,17 +51,17 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = NotoSans-Regular:size=20;1
-font-1 = Font Awesome 5 Free Solid:size=20;1
-font-2 = RobotoMono Nerd Font:size=20;1
-font-3 = "3270Medium Nerd Font:style=Medium:size=20;1"
+font-0 = NotoSans-Regular:size=15;1
+font-1 = Font Awesome 5 Free Solid:size=15;1
+font-2 = RobotoMono Nerd Font:size=15;1
+font-3 = "3270Medium Nerd Font:style=Medium:size=15;1"
 
 modules-left = bspwm i3
 modules-center = xwindow
 modules-right = mpd d filesystem d xbacklight d pulseaudio d xkeyboard d memory d cpu d wlan d eth d battery d temperature d user d date d powermenu
 
 tray-position = right
-tray-padding = 2
+tray-padding = 1
 tray-scale = 1.0
 tray-maxsize = 35
 cursor-click = pointer
