@@ -16,6 +16,8 @@
 ;
 ;==========================================================
 
+; The powerline theme is copied from dotfiles of https://github.com/spitfjre/
+
 [colors]
 material-foreground = ${xrdb:material_foreground}
 material-dark-background = ${xrdb:material_dark_background}
