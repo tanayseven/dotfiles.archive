@@ -32,21 +32,21 @@ secondary = #e60053
 alert = #bd2c40
 
 [variables]
-bar-height = 40
+bar-height = 50
 bar-border-size = -7
 
 label-padding = 1
 label-maxlen = 50
 
 [fonts]
-font-0 = Iosevka SS08:size=18:antialias=true;2
-font-1 = Iosevka SS08:size=18:weight=bold:antialias=true;2
-font-2 = Iosevka SS08:size=24:antialias=true;2
-font-3 = Iosevka SS08:size=24:weight=bold:antialias=true;2
-font-4 = Font Awesome 5 Free:size=18:antialias=true;2
-font-5 = Font Awesome 5 Free:size=18:weight=bold:antialias=true;2
-font-6 = RobotoMono Nerd Font:size=18:antialias=true
-font-7 = Material Design Icons:size=18:antialias=true
+font-0 = Iosevka SS08:size=22:antialias=true;2
+font-1 = Iosevka SS08:size=22:weight=bold:antialias=true;2
+font-2 = Iosevka SS08:size=26:antialias=true;2
+font-3 = Iosevka SS08:size=26:weight=bold:antialias=true;2
+font-4 = Material Design Icons:size=24:antialias=true;2
+font-5 = Font Awesome 5 Free:size=24:weight=bold:antialias=true;2
+font-6 = RobotoMono Nerd Font:size=24:antialias=true
+font-7 = Material Design Icons:size=24:antialias=true
 
 [bar/tanaybar]
 monitor = ${env:MONITOR:}
@@ -461,14 +461,14 @@ label-offline = mpd is offline
 type = custom/script
 exec = xbacklight -get
 inherit = section/base_right_dark
-format-prefix = " "
+format-prefix = " "
 format = <label>%
 
 [module/filesystem]
 type = internal/fs
 interval = 25
 mount-0 = /
-label-mounted =  %percentage_used%%
+label-mounted =  %percentage_used%%
 label-mounted-background = ${colors.material-dark-background}
 label-mounted-padding = ${variables.label-padding}
 
@@ -502,28 +502,31 @@ inherit = section/base_right_primary
 interval = 1
 time = %H:%M
 
-label = %{T6}%{T-} %{T2}%time%%{T-}
+label = %{T6}肋%{T-} %{T2}%time%%{T-}
 
 [module/date]
 type = internal/date
 inherit = section/base_right_primary
 interval = 1
-date = %a %d.%m
+date = %a %Y %m %d
 
-label = %{T6}%{T-} %{T2}%date%%{T-}
+label = %{T6}%{T-} %{T2}%date%%{T-}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 inherit = section/base_right_dark
-format-volume = <label-volume>
-label-volume =   %percentage%%
-label-muted =  M
+format-volume = <ramp-volume> <label-volume>
+; label-volume =   %percentage%%
+label-muted =  M
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 [module/xkeyboard]
 type = internal/xkeyboard
 inherit = section/base_left_dark
 blacklist-0 = num lock
-format-prefix = " "
+format-prefix = " "
 label-layout = %layout%
 label-indicator-padding = 2
 label-indicator-margin = 0
@@ -533,13 +536,13 @@ label-indicator-background = ${colors.material-primary}
 type = internal/memory
 inherit = section/base_right_dark
 interval = 1
-label = %{T5}%{T-} %percentage_used:3%%
+label = %{T5}%{T-} %percentage_used:3%%
 
 [module/cpu]
 type = internal/cpu
 inherit = section/base_right_dark
 interval = 1
-label = %{T5}%{T-} %percentage:3%%
+label = %{T5}﻽%{T-}%percentage:3%%
 label-color = ${colors.material-dark-background}
 
 [module/wlan]
@@ -548,22 +551,17 @@ interface = wlp59s0
 inherit = section/base_right_dark
 interval = 1
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
 accumulate-stats = true
-label-connected = "%essid% %{T5}%{T-} %upspeed:8% %{T3} %{T-} %{T5}%{T-} %downspeed:8%"
-label-disconnected = 
+label-connected = "%essid% %{T5}%{T-} %upspeed:8% %{T3} %{T-} %{T5}%{T-} %downspeed:8%"
+format-disconnected = 郎
+format-disconnected-background = ${colors.material-dark-background}
+format-disconnected-padding = ${variables.label-padding}
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = 冷
+ramp-signal-1 = 爛
+ramp-signal-2 = 嵐
+ramp-signal-3 = 襤
+ramp-signal-4 = 蠟
 
 [module/battery]
 type = internal/battery
@@ -574,27 +572,34 @@ full-at = 98
 
 format-charging = <animation-charging> <label-charging>
 
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
 
-format-full-prefix = " "
+format-full-prefix = " "
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+ramp-capacity-10 = 
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-3 = 
-animation-discharging-4 = 
-animation-discharging-framerate = 750
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+animation-charging-7 = 
+animation-charging-8 = 
+animation-charging-9 = 
+animation-charging-10 = 
+animation-charging-framerate = 100
 
 [module/temperature]
 type = internal/temperature
@@ -611,10 +616,10 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 =  
-ramp-1 =  
-ramp-2 =  
-ramp-foreground = ${colors.foreground-alt}
+ramp-0 = 󰃮 
+ramp-1 =  
+ramp-2 = 󰃭 
+ramp-3 =  
 
 [module/powermenu]
 type = custom/menu
@@ -658,10 +663,3 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
-
-[module/titlehook]
-type = custom/ipc
-hook-0 = echo "Some Text"
-label = %output%
-initial = 1
-
