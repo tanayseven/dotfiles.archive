@@ -44,12 +44,13 @@ font-1 = Iosevka SS08:size=22:weight=bold:antialias=true;2
 font-2 = Iosevka SS08:size=26:antialias=true;2
 font-3 = Iosevka SS08:size=26:weight=bold:antialias=true;2
 font-4 = Material Design Icons:size=24:antialias=true;2
-font-5 = Font Awesome 5 Free:size=24:weight=bold:antialias=true;2
+font-5 = Segoe UI:size=24:weight=bold:antialias=true;2
 font-6 = RobotoMono Nerd Font:size=24:antialias=true
-font-7 = Material Design Icons:size=24:antialias=true
+;font-7 = Material Design Icons:size=24:antialias=true
 
 [bar/tanaybar]
 monitor = ${env:MONITOR:}
+enable-ipc = true
 width = 100%
 height = ${variables.bar-height}
 bottom = false
@@ -68,11 +69,11 @@ font-3 = ${fonts.font-3}
 font-4 = ${fonts.font-4} 
 font-5 = ${fonts.font-5} 
 font-6 = ${fonts.font-6} 
-font-7 = ${fonts.font-7} 
+;font-7 = ${fonts.font-7} 
 
 modules-left = user lsp i3 lpl xwindow
 modules-center = 
-modules-right = rld mpd rsd filesystem rsd xbacklight rsd pulseaudio rsd xkeyboard rsd memory rsd cpu rsd wlan rsd battery rsd temperature rdp date rsp time
+modules-right = rld mpd rsd filesystem rsd backlight rsd pulseaudio rsd xkeyboard rsd memory rsd cpu rsd wlan rsd battery rsd temperature rdp date rsp time
 
 tray-position = right
 tray-padding = 1
@@ -458,12 +459,13 @@ label-song = %{T5}%{T-} %artist% - %title%
 
 label-offline = mpd is offline
 
-[module/xbacklight]
-type = custom/script
-exec = xbacklight -get
+[module/backlight]
+type = custom/ipc
+hook-0 = xbacklight -get
 inherit = section/base_right_dark
 format-prefix = " "
-format = <label>%
+format = <output>%
+initial = 1
 
 [module/filesystem]
 type = internal/fs

@@ -1,4 +1,4 @@
-HOME_CONFIG_FILES := polybar/config dunst/dunstrc i3/config termite/config i3/i3listen.py polybar/launch_polybar.sh
+HOME_CONFIG_FILES := polybar/config dunst/dunstrc i3/config termite/config polybar/launch_polybar.sh
 HOME_CONFIG_DIR := $(HOME)/.config
 HOME_FILES := .zshrc .vimrc .Xresources .aliases
 WORKSPACE_DIR := $(PWD)
