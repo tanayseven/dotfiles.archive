@@ -75,7 +75,7 @@ font-6 = ${fonts.font-6}
 
 modules-left = user lsp i3 lpl xwindow
 modules-center = 
-modules-right = rld mpd rsd filesystem rsd backlight rsd pulseaudio rsd xkeyboard rsd memory rsd cpu rsd wlan rsd battery rsd temperature rdp date rsp time
+modules-right = rld spotify previous playpause next rsd filesystem rsd backlight rsd pulseaudio rsd xkeyboard rsd memory rsd cpu rsd network rsd battery rsd temperature rdp date rsp time
 
 tray-position = right
 tray-padding = 1
@@ -443,23 +443,53 @@ label-urgent = %{T4}◎%{T-} %index%
 label-urgent-font = 2
 label-urgent-padding = ${variables.label-padding}
 
-[module/mpd]
-type = internal/mpd
-inherit = section/base_right_light
+[module/previous]
+type = custom/script
+inherit = section/base_right_dark
+interval = 86400
+format = "%{T5}<label>"
+format-padding = 2
+; Previous song icon
+exec = echo ""
+; Check if spotify is running before displaying the icon
+; exec-if = "pgrep spotify"
+line-size = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 
-format-playing = <label-song> %{T3}%{T-} <icon-prev> <toggle> <icon-next>
-format-paused = <label-song> %{T3}%{T-} <icon-prev> <toggle> <icon-next>
+[module/next]
+type = custom/script
+inherit = section/base_right_dark
+interval = 86400
+format = "%{T5}<label>"
+format-padding = 2
+; Next song icon
+exec = echo ""
+; Check if spotify is running before displaying the icon
+; exec-if = "pgrep spotify"
+line-size = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 
-icon-play = %{T5}%{T-}
-icon-pause = %{T5}%{T-}
-icon-next = %{T5}%{T-}
-icon-prev = %{T5}%{T-}
+[module/playpause]
+type = custom/ipc
+inherit = section/base_right_dark
+format = %{T5}<output>%{T-}
+; Default
+hook-0 = echo ""
+; Playing
+hook-1 = echo ""
+; Paused
+hook-2 = echo ""
+initial = 1
+click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 
-label-song-maxlen = ${variables.label-maxlen}
-label-song-ellipsis = true
-label-song = %{T5}%{T-} %artist% - %title%
-
-label-offline = mpd is offline
+[module/spotify]
+type = custom/ipc
+inherit = section/base_right_dark
+hook-0 = echo "Not playing"
+hook-1 = python ~/.config/polybar/spotify_status.py
+initial = 1
+format-padding = 4
+click-left = i3-msg '[class="Spotify"] focus'
 
 [module/backlight]
 type = custom/ipc
@@ -534,11 +564,12 @@ interval = 1
 label = %{T5}﻽%{T-}%percentage:3%%
 label-color = ${colors.material-dark-background}
 
-[module/wlan]
+[module/network]
 type = internal/network
 interface = wlp59s0
 inherit = section/base_right_dark
 interval = 1
+ping-interval = 3
 format-connected = <ramp-signal> <label-connected>
 accumulate-stats = true
 label-connected = "%essid% %{T5}%{T-}%upspeed:8% %{T3} %{T-} %{T5}%{T-}%downspeed:8%"

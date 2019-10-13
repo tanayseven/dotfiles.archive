@@ -1,4 +1,4 @@
-HOME_CONFIG_FILES := polybar/config dunst/dunstrc i3/config termite/config polybar/launch_polybar.sh
+HOME_CONFIG_FILES := polybar/config dunst/dunstrc i3/config i3/py_spotify_listener.py termite/config polybar/launch_polybar.sh polybar/spotify_status.py
 HOME_CONFIG_DIR := $(HOME)/.config
 HOME_FILES := .zshrc .vimrc .Xresources .aliases
 WORKSPACE_DIR := $(PWD)
@@ -8,11 +8,6 @@ SYSTEM_CONFIG_FILES := $(addprefix $(HOME_CONFIG_DIR)/, $(HOME_CONFIG_FILES)) $(
 WORKSPACE_CONFIG_FILES := $(addprefix $(WORKSPACE_CONFIG_DIR)/, $(HOME_CONFIG_FILES))
 
 update: $(WORKSPACE_CONFIG_FILES)
-
-install: i3ipc
-
-i3ipc:
-	python -c "import i3ipc" || pip install --user i3ipc
 
 $(WORKSPACE_CONFIG_FILES): $(WORKSPACE_DIR)/%:$(HOME)/%
 	@echo "Updating all the files in the current repo..."

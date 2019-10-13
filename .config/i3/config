@@ -32,6 +32,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# Start pyspotify listener
+exec --no-startup-id python ~/.config/i3/py_spotify_listener.py
+
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
