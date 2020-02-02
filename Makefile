@@ -14,5 +14,5 @@ $(WORKSPACE_CONFIG_FILES): $(WORKSPACE_DIR)/%:$(HOME)/%
 	mkdir -p `echo $@ | sed -r "s/(.+)\/.+/\1/"` && cp $< $@
 
 sync_dirs:
-	rsync -rvv $(HOME)/desktop-scripts ./desktop-scripts
+	rsync -rvv $(HOME)/utility-scripts ./utility-scripts
 
