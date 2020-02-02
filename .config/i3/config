@@ -18,6 +18,9 @@ font pango:monospace 8
 # Disable window title
 new_window 1pixel
 
+# Start the composite manager
+exec --no-startup-id xcompmgr -c
+
 # Start notifications service
 exec --no-startup-id dunst
 
