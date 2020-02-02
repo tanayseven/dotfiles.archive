@@ -18,6 +18,9 @@ font pango:monospace 8
 # Disable window title
 new_window 1pixel
 
+# Start the thunar daemon
+exec --no-startup-id thunar --daemon
+
 # Start the composite manager
 exec --no-startup-id xcompmgr -c
 
