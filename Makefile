@@ -15,4 +15,5 @@ $(WORKSPACE_CONFIG_FILES): $(WORKSPACE_DIR)/%:$(HOME)/%
 
 sync_dirs:
 	rsync -rvv $(HOME)/utility-scripts ./utility-scripts
+	rsync -rvv $(HOME)/.fonts ./.fonts
 

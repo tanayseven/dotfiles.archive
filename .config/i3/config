@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:System San Fransisco Display 11
 
 # Disable window title
 new_window 1pixel
@@ -39,7 +39,8 @@ exec --no-startup-id xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput 
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock
+exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/utility-scripts/lock
+exec --no-startup-id xautolock -time 15 -locker sh $HOME/utility-scripts/lock
 
 # Start wallpaper runner
 exec --no-startup-id feh --randomize --bg-fill /home/tanayseven/Images/backgrounds/*
@@ -52,12 +53,15 @@ exec --no-startup-id nm-applet
 exec --no-startup-id python ~/.config/i3/py_spotify_listener.py
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym XF86AudioRaiseVolume exec --no-startup-id sh $HOME/utility-scripts/increase-volume
+bindsym XF86AudioLowerVolume exec --no-startup-id sh $HOME/utility-scripts/decrease-volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# kill focused window
+bindsym $mod+Shift+x exec --no-startup-id sh $HOME/utility-scripts/lock
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id termite

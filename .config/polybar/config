@@ -41,14 +41,13 @@ label-padding = 1
 label-maxlen = 50
 
 [fonts]
-font-0 = Iosevka SS08:size=22:antialias=true;2
-font-1 = Iosevka SS08:size=22:weight=bold:antialias=true;2
-font-2 = Iosevka SS08:size=26:antialias=true;2
-font-3 = Iosevka SS08:size=26:weight=bold:antialias=true;2
+font-0 = System San Francisco Display:size=22:antialias=true;2
+font-1 = System San Francisco Display:size=22:weight=bold:antialias=true;2
+font-2 = System San Francisco Display:size=26:antialias=true;2
+font-3 = System San Francisco Display:size=26:weight=bold:antialias=true;2
 font-4 = Material Design Icons:size=24:antialias=true;2
 font-5 = Segoe UI:size=24:weight=bold:antialias=true;2
 font-6 = RobotoMono Nerd Font:size=24:antialias=true
-;font-7 = Material Design Icons:size=24:antialias=true
 
 [bar/top-bar]
 monitor = ${env:MONITOR:}
