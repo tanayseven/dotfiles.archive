@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+while true; do
+    feh --randomize --bg-fill $HOME/Images/backgrounds
+    sleep 15m
+done
+
