@@ -27,6 +27,9 @@ exec --no-startup-id xcompmgr -c
 # Start notifications service
 exec --no-startup-id dunst
 
+# Start Zoom with correct scaling
+exec --no-startup-id QT_SCALE_FACTOR=0.65 zoom
+
 # Set input parameters for touchpad
 exec --no-startup-id xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Tapping Enabled" 1
 
