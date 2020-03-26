@@ -1,6 +1,6 @@
 HOME_CONFIG_FILES := polybar/config dunst/dunstrc i3/config i3/py_spotify_listener.py termite/config polybar/launch_polybar.sh polybar/spotify_status.py
 HOME_CONFIG_DIR := $(HOME)/.config
-HOME_FILES := .zshrc .vimrc .Xresources .aliases
+HOME_FILES := .zshrc .vimrc .Xresources .aliases .xinitrc
 WORKSPACE_DIR := $(PWD)
 WORKSPACE_CONFIG_DIR := $(WORKSPACE_DIR)/.config
 
