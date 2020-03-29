@@ -1,26 +1,26 @@
 #!/usr/bin/sh
 while true; do
     hour=$(date +%k)
-    minute=$(date +%l)
-    if [ $hour == 22 -a $minute == 0 ]
+    minute=$(date +%M)
+    if [ $hour == "22" -a $minute == "00" ]
     then
         echo "Shutdown triggered"
         shutdown 0 now
     fi
-    if [ $hour == 21 -a $minute == 58 ]
+    if [ $hour == "21" -a $minute == "58" ]
     then
         echo "Notification shown"
-        notify-send -u critical -a "SHUTDOWN WARNING" "The machine will shutdown in 2 minutes"
+        notify-send -u critical -a "SHUTDOWN WARNING" "The machine will shutdown in 2 minutes" -t 20
     fi
-    if [ $hour == 21 -a $minute == 55 ]
+    if [ $hour == "21" -a $minute == "55" ]
     then
         echo "Notification shown"
-        notify-send -u critical -a "SHUTDOWN WARNING" "The machine will shutdown in 5 minutes"
+        notify-send -u critical -a "SHUTDOWN WARNING" "The machine will shutdown in 5 minutes" -t 20
     fi
-    if [ $hour == 21 -a $minute == 50 ]
+    if [ $hour == "21" -a $minute == "50" ]
     then
         echo "Notification shown"
-        notify-send -u critical -a "SHUTDOWN WARNING" "The machine will shutdown in 10 minutes"
+        notify-send -u critical -a "SHUTDOWN WARNING" "The machine will shutdown in 10 minutes" -t 20
     fi
     sleep 10
 done
