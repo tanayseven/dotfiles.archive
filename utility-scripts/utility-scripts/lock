@@ -1,2 +1,4 @@
 #!/usr/bin/sh
-i3lock --color="#002b36" -k --timecolor="93a1a1ff" --datecolor="93a1a1ff"
+i3lock  \
+        --color="#002b36" -k --timecolor="93a1a1ff" --datecolor="93a1a1ff" \
+        -b
