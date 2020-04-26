@@ -22,13 +22,10 @@ new_window 1pixel
 exec --no-startup-id thunar --daemon
 
 # Start the composite manager
-exec --no-startup-id xcompmgr -c
+exec --no-startup-id compton
 
 # Start notifications service
 exec --no-startup-id dunst
-
-# Start Zoom with correct scaling
-exec --no-startup-id QT_SCALE_FACTOR=0.65 zoom
 
 # Set input parameters for touchpad
 exec --no-startup-id xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Tapping Enabled" 1
@@ -51,9 +48,6 @@ exec --no-startup-id $HOME/utility-scripts/auto-background-randomiser
 # Start system shutdowner
 exec --no-startup-id $HOME/utility-scripts/force-shutdown-at-night
 
-# Start rescuetime
-exec --no-startup-id rescuetime
-
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -63,6 +57,9 @@ exec --no-startup-id ibus-daemon --xim -d -r
 
 # Start pyspotify listener
 exec --no-startup-id python ~/.config/i3/py_spotify_listener.py
+
+# Start rescuetime
+exec --no-startup-id rescuetime
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id sh $HOME/utility-scripts/increase-volume
@@ -174,6 +171,12 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+
+# start programs in different workspaces
+exec --no-startup-id i3-msg 'workspace 10; exec QT_SCALE_FACTOR=0.65 zoom'
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/termite'
+exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/firefox'
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
