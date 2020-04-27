@@ -471,9 +471,10 @@ label-visible = %{T4}○%{T-} %index%
 label-visible-font = 2
 label-visible-padding = ${variables.label-padding}
 
-label-urgent = %{T4}◎%{T-} %index%
+label-urgent = %{T4}●%{T-} %index%
 label-urgent-font = 2
 label-urgent-padding = ${variables.label-padding}
+label-urgent-foreground = ${colors.material-warn}
 
 [module/previous]
 type = custom/script
@@ -581,7 +582,7 @@ format-prefix = " "
 label-layout = %layout%
 label-indicator-padding = 2
 label-indicator-margin = 0
-label-indicator-background = ${colors.material-primary}
+label-indicator-background = ${colors.material-warn}
 
 [module/memory]
 type = internal/memory
