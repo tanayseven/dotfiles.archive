@@ -45,9 +45,6 @@ exec --no-startup-id xautolock -time 15 -locker sh $HOME/utility-scripts/lock
 # Start wallpaper runner
 exec --no-startup-id $HOME/utility-scripts/auto-background-randomiser
 
-# Start system shutdowner
-exec --no-startup-id $HOME/utility-scripts/force-shutdown-at-night
-
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
