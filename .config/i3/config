@@ -22,7 +22,7 @@ new_window 1pixel
 exec --no-startup-id thunar --daemon
 
 # Start the composite manager
-exec --no-startup-id compton
+exec --no-startup-id picom
 
 # Start notifications service
 exec --no-startup-id dunst
@@ -57,6 +57,9 @@ exec --no-startup-id python ~/.config/i3/py_spotify_listener.py
 
 # Start rescuetime
 exec --no-startup-id rescuetime
+
+# Start f.lux (xflux)
+exec --no-startup-id fluxgui
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id sh $HOME/utility-scripts/increase-volume
