@@ -48,6 +48,7 @@ font-3 = System San Francisco Display:size=26:weight=bold:antialias=true;2
 font-4 = Material Design Icons:size=24:antialias=true;2
 font-5 = Segoe UI:size=24:weight=bold:antialias=true;2
 font-6 = RobotoMono Nerd Font:size=24:antialias=true
+font-7 = Noto Color Emoji:scale=5:antialias=true
 
 [bar/top-bar]
 monitor = ${env:MONITOR:}
@@ -70,6 +71,7 @@ font-3 = ${fonts.font-3}
 font-4 = ${fonts.font-4} 
 font-5 = ${fonts.font-5} 
 font-6 = ${fonts.font-6} 
+font-7 = ${fonts.font-7} 
 
 modules-left = user lsp i3 lpl
 modules-center = xwindow
@@ -104,6 +106,7 @@ font-3 = ${fonts.font-3}
 font-4 = ${fonts.font-4} 
 font-5 = ${fonts.font-5} 
 font-6 = ${fonts.font-6} 
+font-7 = ${fonts.font-7} 
 
 modules-left = 
 modules-center = 
@@ -459,19 +462,19 @@ pin-workspaces = true
 format-padding = ${variables.label-padding}
 format-background = ${colors.material-primary}
 
-label-focused = %{T4}●%{T-} %index%
+label-focused = %{T7}●%{T-} %index%
 label-focused-font = 2
 label-focused-padding = ${variables.label-padding}
 
-label-unfocused = %{T4}◌%{T-} %index%
+label-unfocused = %{T7}◌%{T-} %index%
 label-unfocused-font = 2
 label-unfocused-padding = ${variables.label-padding}
 
-label-visible = %{T4}○%{T-} %index%
+label-visible = %{T7}⃝ %{T-} %index%
 label-visible-font = 2
 label-visible-padding = ${variables.label-padding}
 
-label-urgent = %{T4}●%{T-} %index%
+label-urgent = %{T7}⊚ %{T-} %index%
 label-urgent-font = 2
 label-urgent-padding = ${variables.label-padding}
 label-urgent-foreground = ${colors.material-warn}
@@ -480,10 +483,10 @@ label-urgent-foreground = ${colors.material-warn}
 type = custom/script
 inherit = section/base_right_dark
 interval = 86400
-format = "%{T5}<label>"
+format = "%{T7}<label>%{T-}"
 format-padding = 2
 ; Previous song icon
-exec = echo ""
+exec = echo "󰒮"
 ; Check if spotify is running before displaying the icon
 ; exec-if = "pgrep spotify"
 line-size = 1
@@ -493,10 +496,10 @@ click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org
 type = custom/script
 inherit = section/base_right_dark
 interval = 86400
-format = "%{T5}<label>"
+format = "%{T7}<label>"
 format-padding = 2
 ; Next song icon
-exec = echo ""
+exec = echo "󰒭"
 ; Check if spotify is running before displaying the icon
 ; exec-if = "pgrep spotify"
 line-size = 1
@@ -507,11 +510,11 @@ type = custom/ipc
 inherit = section/base_right_dark
 format = %{T5}<output>%{T-}
 ; Default
-hook-0 = echo ""
+hook-0 = echo "󰐎"
 ; Playing
-hook-1 = echo ""
+hook-1 = echo "󰐊"
 ; Paused
-hook-2 = echo ""
+hook-2 = echo "󰏤"
 initial = 1
 click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 
@@ -528,7 +531,7 @@ click-left = i3-msg '[class="Spotify"] focus'
 type = custom/ipc
 hook-0 = xbacklight -get
 inherit = section/base_right_dark
-format-prefix = " "
+format-prefix = %{T7}󰃟 %{T-}
 format = <output>%
 initial = 1
 
@@ -536,14 +539,14 @@ initial = 1
 type = internal/fs
 interval = 25
 mount-0 = /
-label-mounted =  %percentage_used%%
+label-mounted = %{T6}󰋊 %{T-}%percentage_used%%
 label-mounted-background = ${colors.material-dark-background}
 label-mounted-padding = ${variables.label-padding}
 
 [module/user]
 type = custom/script
 exec = getent passwd | grep $USER | awk -F ':' '{print $5}'
-format-prefix = " "
+format-prefix = %{T7}👨 %{T-}
 format = <label>
 format-background = ${colors.material-primary}
 format-padding = ${variables.label-padding}
@@ -568,17 +571,16 @@ format-disconnected =
 type = internal/pulseaudio
 inherit = section/base_right_dark
 format-volume = <ramp-volume> <label-volume>
-; label-volume =   %percentage%%
-label-muted =  M
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+label-muted = 󰖁 Mute
+ramp-volume-0 = 󰕿
+ramp-volume-1 = 󰖀
+ramp-volume-2 = 󰕾
 
 [module/xkeyboard]
 type = internal/xkeyboard
 inherit = section/base_left_dark
 blacklist-0 = num lock
-format-prefix = " "
+format-prefix = "󰌓 "
 label-layout = %layout%
 label-indicator-padding = 2
 label-indicator-margin = 0
@@ -588,13 +590,13 @@ label-indicator-background = ${colors.material-warn}
 type = internal/memory
 inherit = section/base_right_dark
 interval = 1
-label = %{T5}%{T-} %percentage_used:3%%
+label = %{T7}󰘚%{T-} %percentage_used:3%%
 
 [module/cpu]
 type = internal/cpu
 inherit = section/base_right_dark
 interval = 1
-label = %{T5}﻽%{T-}%percentage:3%%
+label = %{T5}󰻠%{T-}%percentage:3%%
 label-color = ${colors.material-dark-background}
 
 [module/network]
@@ -606,17 +608,17 @@ ping-interval = 3
 format-connected = <ramp-signal> <label-connected>
 format-connected-background = ${colors.material-dark-background}
 accumulate-stats = true
-label-connected = "%essid% %{T5}%{T-}%upspeed:8% %{T3} %{T-} %{T5}%{T-}%downspeed:8%"
+label-connected = "%essid% %{T5}󰕒%{T-}%upspeed:8% %{T3} %{T-} %{T5}󰇚%{T-}%downspeed:8%"
 label-connected-background = ${colors.material-dark-background}
-format-disconnected = 郎
+format-disconnected = 󰤮
 format-disconnected-background = ${colors.material-dark-background}
 format-disconnected-padding = ${variables.label-padding}
 
-ramp-signal-0 = 冷
-ramp-signal-1 = 爛
-ramp-signal-2 = 嵐
-ramp-signal-3 = 襤
-ramp-signal-4 = 蠟
+ramp-signal-0 = 󰤯
+ramp-signal-1 = 󰤟
+ramp-signal-2 = 󰤢
+ramp-signal-3 = 󰤥
+ramp-signal-4 = 󰤨
 
 [module/battery]
 type = internal/battery
@@ -631,29 +633,29 @@ format-discharging = <ramp-capacity> <label-discharging>
 
 format-full-prefix = " "
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-5 = 
-ramp-capacity-6 = 
-ramp-capacity-7 = 
-ramp-capacity-8 = 
-ramp-capacity-9 = 
-ramp-capacity-10 = 
+ramp-capacity-0 = 󱃍
+ramp-capacity-1 = 󰁺
+ramp-capacity-2 = 󰁻
+ramp-capacity-3 = 󰁼
+ramp-capacity-4 = 󰁽
+ramp-capacity-5 = 󰁾
+ramp-capacity-6 = 󰁿
+ramp-capacity-7 = 󰂀
+ramp-capacity-8 = 󰂁
+ramp-capacity-9 = 󰂂
+ramp-capacity-10 = 󰁹
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-5 = 
-animation-charging-6 = 
-animation-charging-7 = 
-animation-charging-8 = 
-animation-charging-9 = 
-animation-charging-10 = 
+animation-charging-0 = 󰢟
+animation-charging-1 = 󰢜
+animation-charging-2 = 󰂆
+animation-charging-3 = 󰂇
+animation-charging-4 = 󰂈
+animation-charging-5 = 󰢝
+animation-charging-6 = 󰂉
+animation-charging-7 = 󰢞
+animation-charging-8 = 󰂊
+animation-charging-9 = 󰂋
+animation-charging-10 = 󰂅
 animation-charging-framerate = 100
 
 [module/temperature]
@@ -669,12 +671,12 @@ format-warn-underline = ${self.format-underline}
 
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = ${colors.alert}
 
-ramp-0 = 󰃮 
-ramp-1 =  
-ramp-2 = 󰃭 
-ramp-3 =  
+ramp-0 = 󱃃
+ramp-1 = 󰔏
+ramp-2 = 󱃂
+ramp-3 = 󰸁
 
 [module/date]
 type = internal/date
@@ -682,7 +684,7 @@ inherit = section/base_right_primary
 interval = 1
 date = %a %Y %m %d
 
-label = %{T6}%{T-} %{T2}%date%%{T-}
+label = %{T6}📅%{T-} %{T2}%date%%{T-}
 
 [module/time]
 type = internal/date
@@ -690,7 +692,7 @@ inherit = section/base_right_primary
 interval = 1
 time = %H:%M
 
-label = %{T6}肋%{T-} %{T2}%time%%{T-}
+label = %{T6}🕐%{T-} %{T2}%time%%{T-}
 
 [module/powermenu]
 type = custom/menu
