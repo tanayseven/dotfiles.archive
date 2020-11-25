@@ -34,20 +34,20 @@ secondary = #e60053
 alert = #bd2c40
 
 [variables]
-bar-height = 50
-bar-border-size = -7
+bar-height = 55
+bar-border-size = -11
 
 label-padding = 1
 label-maxlen = 50
 
 [fonts]
-font-0 = System San Francisco Display:size=22:antialias=true;2
-font-1 = System San Francisco Display:size=22:weight=bold:antialias=true;2
-font-2 = System San Francisco Display:size=26:antialias=true;2
-font-3 = System San Francisco Display:size=26:weight=bold:antialias=true;2
-font-4 = Material Design Icons:size=24:antialias=true;2
+font-0 = System San Francisco Display:size=24:antialias=true;2
+font-1 = System San Francisco Display:size=24:weight=bold:antialias=true;2
+font-2 = System San Francisco Display:size=28:antialias=true;2
+font-3 = System San Francisco Display:size=28:weight=bold:antialias=true;2
+font-4 = Material Design Icons:size=26:antialias=true;2
 font-5 = Segoe UI:size=24:weight=bold:antialias=true;2
-font-6 = RobotoMono Nerd Font:size=24:antialias=true
+font-6 = RobotoMono Nerd Font:size=26:antialias=true
 font-7 = Noto Color Emoji:scale=5:antialias=true
 
 [bar/top-bar]
@@ -79,7 +79,7 @@ modules-right = rlp date rsp time
 
 tray-position = right
 tray-padding = 1
-tray-scale = 0.9
+tray-scale = 0.8
 tray-maxsize = 30
 tray-background = ${colors.material-primary}
 cursor-click = pointer
@@ -631,7 +631,7 @@ format-charging = <animation-charging> <label-charging>
 
 format-discharging = <ramp-capacity> <label-discharging>
 
-format-full-prefix = " "
+format-full-prefix = "󰁹 "
 
 ramp-capacity-0 = 󱃍
 ramp-capacity-1 = 󰁺
