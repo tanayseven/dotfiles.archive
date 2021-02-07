@@ -1,4 +1,16 @@
 #!/usr/bin/sh
-i3lock  \
-        --color="#002b36" -k --timecolor="93a1a1ff" --datecolor="93a1a1ff" \
-        -b
+#!/bin/bash
+
+xscreensaver-command -activate &
+xscreensaver-command -watch | while read -r line
+do
+    if [[ ${line::1} == U ]]
+    then
+        killall xscreensaver-command
+        i3lock  \
+                --color="#002b36" -k --timecolor="93a1a1ff" --datecolor="93a1a1ff" \
+                -b
+    fi
+done
+
+

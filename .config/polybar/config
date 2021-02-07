@@ -693,6 +693,7 @@ interval = 1
 time = %H:%M
 
 label = %{T6}🕐%{T-} %{T2}%time%%{T-}
+margin-right = 5
 
 [module/powermenu]
 type = custom/menu
