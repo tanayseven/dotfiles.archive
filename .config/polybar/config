@@ -512,9 +512,9 @@ format = %{T5}<output>%{T-}
 ; Default
 hook-0 = echo "󰐎"
 ; Playing
-hook-1 = echo "󰐊"
+hook-1 = echo "󰏤"
 ; Paused
-hook-2 = echo "󰏤"
+hook-2 = echo "󰐊"
 initial = 1
 click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 
@@ -661,8 +661,8 @@ animation-charging-framerate = 100
 [module/temperature]
 type = internal/temperature
 inherit = section/base_right_dark
-thermal-zone = 0
-warn-temperature = 60
+thermal-zone = 4
+warn-temperature = 90
 
 format = <ramp> <label>
 format-underline = #f50a4d

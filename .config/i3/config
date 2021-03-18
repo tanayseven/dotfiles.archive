@@ -39,9 +39,9 @@ exec --no-startup-id xinput set-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput 
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend.
-exec --no-startup-id xscreensaver &
+exec --no-startup-id xscreensaver -nosplash &
 exec --no-startup-id xss-lock --transfer-sleep-lock -- sh $HOME/utility-scripts/lock
-exec --no-startup-id xautolock -time 15 -locker sh $HOME/utility-scripts/lock
+exec --no-startup-id xautolock -time 1 -locker sh $HOME/utility-scripts/lock
 
 # Start wallpaper runner
 exec --no-startup-id $HOME/utility-scripts/auto-background-randomiser

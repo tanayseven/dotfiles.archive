@@ -1,0 +1,4 @@
+#!/bin/sh
+jack_control exit  
+pulseaudio --start
+
