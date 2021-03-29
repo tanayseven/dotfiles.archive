@@ -24,6 +24,9 @@ exec --no-startup-id thunar --daemon
 # Start the composite manager
 exec --no-startup-id picom
 
+# Start flashfocus (https://github.com/fennerm/flashfocus)
+exec_always --no-startup-id flashfocus
+
 # Start notifications service
 exec --no-startup-id dunst
 
@@ -56,9 +59,6 @@ exec --no-startup-id ibus-daemon --xim -d -r
 # Start pyspotify listener
 exec --no-startup-id python ~/.config/i3/py_spotify_listener.py
 
-# Start rescuetime
-exec --no-startup-id rescuetime
-
 # Start f.lux (xflux)
 exec --no-startup-id fluxgui
 
@@ -80,7 +80,7 @@ bindsym $mod+Return exec --no-startup-id termite
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run
+bindsym $mod+space exec rofi -show run
 
 # strart clipmenu clipboard manager
 exec --no-startup-id CM_LAUNCHER=rofi clipmenud
@@ -127,13 +127,16 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+ctrl+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+
+# flash the currently focused window
+bindsym $mod+n exec --no-startup-id flash_window
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -242,7 +245,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 2 && polybar-
 
 # Setup gaps
 # for_window [class="^.*"] border pixel 0
-# gaps inner 5
+gaps inner 10
 
 exec --no-startup-id $HOME/.config/polybar/launch_polybar.sh
 
