@@ -1,6 +1,10 @@
 Tanay's Dotfiles
 ================
 
+Archiving this since I've switched to KDE form this complicated setup. Will keep this for reference.
+----------------------------------------------------------------------------------------------------
+
+
 Caution, this repo is just ment to sync with local dotfiles, please do not edit any files here directly
 -------------------------------------------------------------------------------------------------------
 
